@@ -1,4 +1,4 @@
-package com.treinamentodb.Projeto_DesafioCrud.service;
+package com.treinamentodb.Projeto_DesafioCrud.service.interfaces;
 
 import com.treinamentodb.Projeto_DesafioCrud.models.Endereco;
 import com.treinamentodb.Projeto_DesafioCrud.models.Pessoa;
@@ -12,7 +12,7 @@ public interface PessoaInterface {
 
     public List<Pessoa> listarPessoas();
 
-    public Pessoa buscarPessoaPorId(Long id);
+    public Pessoa buscarPessoaPorId(Long id) throws RuntimeException;
 
     public Pessoa cadastrarNovaPessoa(Pessoa pessoa);
 

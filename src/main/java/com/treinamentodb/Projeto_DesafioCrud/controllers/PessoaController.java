@@ -2,9 +2,10 @@ package com.treinamentodb.Projeto_DesafioCrud.controllers;
 
 import com.treinamentodb.Projeto_DesafioCrud.models.Endereco;
 import com.treinamentodb.Projeto_DesafioCrud.models.Pessoa;
-import com.treinamentodb.Projeto_DesafioCrud.repositories.PessoaRepository;
-import com.treinamentodb.Projeto_DesafioCrud.service.PessoaInterface;
+import com.treinamentodb.Projeto_DesafioCrud.service.interfaces.PessoaInterface;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,8 +24,12 @@ public class PessoaController {
     }
 
     @GetMapping(value = "/{id}")
-    public Pessoa findAll(@PathVariable Long id) {
-        return pessoa.buscarPessoaPorId(id);
+    public ResponseEntity<Pessoa> buscarPorId(@PathVariable Long id) {
+        try {
+            return new ResponseEntity<>(pessoa.buscarPessoaPorId(id), HttpStatus.OK);
+        } catch (RuntimeException ex){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
 
     @PostMapping

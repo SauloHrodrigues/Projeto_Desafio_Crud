@@ -3,9 +3,9 @@ package com.treinamentodb.Projeto_DesafioCrud.service;
 import com.treinamentodb.Projeto_DesafioCrud.models.Endereco;
 import com.treinamentodb.Projeto_DesafioCrud.models.Pessoa;
 import com.treinamentodb.Projeto_DesafioCrud.repositories.PessoaRepository;
+import com.treinamentodb.Projeto_DesafioCrud.service.interfaces.PessoaInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,8 +19,8 @@ public class PessoaService implements PessoaInterface {
         return pessoaRepository.findAll();
     }
 
-    public Pessoa buscarPessoaPorId(Long id) {
-        return pessoaRepository.findById(id).get();
+    public Pessoa buscarPessoaPorId(Long id) throws RuntimeException {
+        return pessoaRepository.findById(id).orElseThrow(() -> new RuntimeException("No data!"));
     }
 
 
