@@ -19,10 +19,10 @@ public class Pessoa {
     private String nome;
     private String nascimento;
     private String CPF;
+//    @Embedded
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "pees_id")
+    private List<Endereco> enderecos;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pessoa")
-    private List<Endereco>enderecos = new ArrayList<>();
-
-    public Pessoa(){}
 
 }
