@@ -15,6 +15,7 @@ public class PessoaService implements PessoaInterface {
     @Autowired
     private PessoaRepository pessoaRepository;
 
+
     public List<Pessoa> listarPessoas() {
         return pessoaRepository.findAll();
     }
@@ -44,4 +45,5 @@ public class PessoaService implements PessoaInterface {
             return false;
         }
     }
+
 }
