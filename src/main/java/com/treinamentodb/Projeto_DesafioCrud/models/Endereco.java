@@ -1,6 +1,7 @@
 package com.treinamentodb.Projeto_DesafioCrud.models;
 
 
+import com.treinamentodb.Projeto_DesafioCrud.dto.EnderecoRequestDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -28,6 +29,12 @@ public class Endereco {
         this.cidade = cidade;
         this.cep = cep;
         this.estado = estado;
+    }  public Endereco(EnderecoRequestDto enderecoRequestDto) {
+        this.rua = enderecoRequestDto.getRua();
+        this.numero = enderecoRequestDto.getNumero();
+        this.cidade = enderecoRequestDto.getCidade();
+        this.cep = enderecoRequestDto.getCep();
+        this.estado = enderecoRequestDto.getEstado();
     }
 
     public Endereco(){

@@ -1,6 +1,7 @@
 package com.treinamentodb.Projeto_DesafioCrud.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.treinamentodb.Projeto_DesafioCrud.dto.PessoaRequisitarDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,13 +23,19 @@ public class Pessoa {
 //    @Embedded
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "pees_id")
-    private List<Endereco> enderecos;
+    private List<Endereco> enderecos = new ArrayList<>();
 
     public Pessoa(String nome, String nascimento, String CPF, List<Endereco> enderecos) {
         this.nome = nome;
         this.nascimento = nascimento;
         this.CPF = CPF;
         this.enderecos = enderecos;
+    }
+    public Pessoa(PessoaRequisitarDto pessoaRequisitarDto ) {
+        this.nome = pessoaRequisitarDto.getNome();
+        this.nascimento = pessoaRequisitarDto.getNascimento();
+        this.CPF = pessoaRequisitarDto.getCPF();
+        this.enderecos.add(pessoaRequisitarDto.getEnderecos());
     }
 
     public Pessoa(){

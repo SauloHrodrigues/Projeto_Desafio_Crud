@@ -1,5 +1,8 @@
 package com.treinamentodb.Projeto_DesafioCrud.controllers;
 
+import com.treinamentodb.Projeto_DesafioCrud.dto.EnderecoRequestDto;
+import com.treinamentodb.Projeto_DesafioCrud.dto.PessoaRequisitarDto;
+import com.treinamentodb.Projeto_DesafioCrud.dto.PessoaResponderDto;
 import com.treinamentodb.Projeto_DesafioCrud.models.Endereco;
 import com.treinamentodb.Projeto_DesafioCrud.models.Pessoa;
 import com.treinamentodb.Projeto_DesafioCrud.service.interfaces.PessoaInterface;
@@ -17,7 +20,6 @@ public class PessoaController {
     @Autowired
     private  PessoaInterface pessoa;
 
-
     @GetMapping
     public List<Pessoa> listarPessoas() {
         return pessoa.listarPessoas();
@@ -25,19 +27,16 @@ public class PessoaController {
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<Pessoa> buscarPorId(@PathVariable Long id) {
-        try {
-            return new ResponseEntity<>(pessoa.buscarPessoaPorId(id), HttpStatus.OK);
-        } catch (RuntimeException ex){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
+        return pessoa.buscarPessoaPorId(id);
+
     }
 
     @PostMapping
-    public Pessoa cadastrarNovaPessoa(@RequestBody Pessoa pessoa) {
-        return this.pessoa.cadastrarNovaPessoa(pessoa);
+    public Pessoa cadastrarNovaPessoa(@RequestBody PessoaRequisitarDto pessoaRequisitarDtoo) {
+        return pessoa.cadastrarNovaPessoa(pessoaRequisitarDtoo);
     }
     @PatchMapping ("/edereco/{id}")
-    public Pessoa cadastrarNovoEnderco(@PathVariable("id") Long id, @RequestBody Endereco novoEndereco) {
+    public PessoaResponderDto cadastrarNovoEnderco(@PathVariable("id") Long id, @RequestBody EnderecoRequestDto novoEndereco) {
         return pessoa.cadastrarNovoEnderco(id,novoEndereco);
     }
 
@@ -45,5 +44,4 @@ public class PessoaController {
     public boolean exluirPessoaPorId(@PathVariable("id") Long id){
         return pessoa.exluirPessoaPorId(id);
     }
-
 }
