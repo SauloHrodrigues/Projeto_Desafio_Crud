@@ -3,12 +3,8 @@ package com.treinamentodb.Projeto_DesafioCrud.controllers;
 import com.treinamentodb.Projeto_DesafioCrud.dto.EnderecoRequestDto;
 import com.treinamentodb.Projeto_DesafioCrud.dto.PessoaRequisitarDto;
 import com.treinamentodb.Projeto_DesafioCrud.dto.PessoaResponderDto;
-import com.treinamentodb.Projeto_DesafioCrud.models.Endereco;
 import com.treinamentodb.Projeto_DesafioCrud.models.Pessoa;
-import com.treinamentodb.Projeto_DesafioCrud.service.interfaces.PessoaInterface;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

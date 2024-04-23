@@ -6,20 +6,18 @@ import com.treinamentodb.Projeto_DesafioCrud.dto.PessoaResponderDto;
 import com.treinamentodb.Projeto_DesafioCrud.models.Endereco;
 import com.treinamentodb.Projeto_DesafioCrud.models.Pessoa;
 import com.treinamentodb.Projeto_DesafioCrud.repositories.PessoaRepository;
-import com.treinamentodb.Projeto_DesafioCrud.service.interfaces.PessoaInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 
 import java.util.List;
 
 @Service
 @Component
-public class PessoaService implements PessoaInterface {
+public class PessoaService {
 
     @Autowired
     private PessoaRepository pessoaRepository;
@@ -29,7 +27,7 @@ public class PessoaService implements PessoaInterface {
         return pessoaRepository.findAll();
     }
 
-     @Override
+//     @Override
     public ResponseEntity<Pessoa> buscarPessoaPorId(Long id) throws RuntimeException {
         Pessoa pessoa = pessoaRepository.findById(id).orElseThrow(() -> new RuntimeException("No data!"));
         try {
