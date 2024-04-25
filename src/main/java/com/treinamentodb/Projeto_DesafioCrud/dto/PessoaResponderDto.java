@@ -19,11 +19,5 @@ public class PessoaResponderDto {
     private String CPF;
     private List<Endereco> enderecos;
 
-    public PessoaResponderDto(Pessoa pessoa) {
-        this.id = pessoa.getId();
-        this.nome = pessoa.getNome();
-        this.nascimento = pessoa.getNascimento();
-        this.CPF = pessoa.getCPF();
-        this.enderecos = pessoa.getEnderecos();
-    }
+
 }

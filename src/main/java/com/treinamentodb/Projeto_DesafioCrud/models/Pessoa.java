@@ -19,7 +19,7 @@ public class Pessoa {
     private Long id;
     private String nome;
     private String nascimento;
-    private String CPF;
+    private String cpf;
 //    @Embedded
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "pees_id")

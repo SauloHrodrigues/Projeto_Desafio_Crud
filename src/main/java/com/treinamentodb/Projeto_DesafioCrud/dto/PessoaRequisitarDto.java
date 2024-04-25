@@ -11,7 +11,7 @@ import java.util.List;
 public class PessoaRequisitarDto {
         private String nome;
         private String nascimento;
-        private String CPF;
-        private Endereco enderecos;
+        private String cpf;
+        private EnderecoRequestDto endereco;
 
 }
