@@ -36,4 +36,18 @@ public class PessoaService {
 
     }
 
+    public void alterar(Long id, PessoaRequisitarDto pessoaAlterada){
+        Pessoa pessoaBuscada = pessoaRepository.findById(id).orElse(null);
+
+        if(pessoaBuscada != null){
+            Endereco endereco = new Endereco();
+//            BeanUtils.copyProperties(pessoaAlterada.getEndereco(),endereco);
+            BeanUtils.copyProperties(pessoaAlterada,pessoaBuscada); //
+            pessoaBuscada.getEnderecos().add(endereco);
+
+            pessoaRepository.save(pessoaBuscada);
+
+        }
+    }
+
 }

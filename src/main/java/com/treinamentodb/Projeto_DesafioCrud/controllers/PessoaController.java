@@ -22,4 +22,9 @@ public class PessoaController {
         service.gravar(dto);
     }
 
+    @PutMapping("/{id}")
+    public void alterarPessoa(@PathVariable("id") Long id, @RequestBody PessoaRequisitarDto pessoaAlterada){
+        service.alterar(id,pessoaAlterada);
+    }
+
 }
