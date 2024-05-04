@@ -32,8 +32,8 @@ public class PessoaController {
 
 //    updade
     @PutMapping("/{id}")
-    public void alterarPessoa(@PathVariable("id") Long id, @RequestBody PessoaRequisitarDto pessoaAlterada){
-        service.alterar(id,pessoaAlterada);
+    public PessoaResponderDto alterarPessoa(@PathVariable("id") Long id, @RequestBody PessoaRequisitarDto pessoaAlterada){
+        return service.alterar(id,pessoaAlterada);
     }
 
 //    delete

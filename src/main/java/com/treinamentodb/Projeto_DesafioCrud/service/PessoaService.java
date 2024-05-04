@@ -43,7 +43,7 @@ public class PessoaService {
         return new PessoaResponderDto(pessoaSalva);
     }
 
-    public void alterar(Long id, PessoaRequisitarDto pessoaAlterada){
+    public PessoaResponderDto alterar(Long id, PessoaRequisitarDto pessoaAlterada){
         Pessoa pessoaBuscada = pessoaRepository.findById(id).orElse(null);
 
         if(pessoaBuscada != null){
@@ -53,8 +53,9 @@ public class PessoaService {
             pessoaBuscada.getEnderecos().add(endereco);
 
             pessoaRepository.save(pessoaBuscada);
-
+            return new PessoaResponderDto(pessoaRepository.findById(id).get());
         }
+        return null;
     }
 
     public List<PessoaResponderDto> listarPessoasCadastradas() {
