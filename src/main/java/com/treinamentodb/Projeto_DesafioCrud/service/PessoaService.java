@@ -60,4 +60,13 @@ public class PessoaService {
 
         return pessoaDtoList;
     }
+
+    public boolean apagarPessoa(Long id) {
+        Pessoa pessoaBuscada = pessoaRepository.findById(id).orElse(null);
+        if(pessoaBuscada != null){
+           pessoaRepository.deleteById(id);
+           return true;
+        }
+        return false;
+    }
 }

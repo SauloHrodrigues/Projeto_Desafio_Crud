@@ -32,5 +32,9 @@ public class PessoaController {
     public void alterarPessoa(@PathVariable("id") Long id, @RequestBody PessoaRequisitarDto pessoaAlterada){
         service.alterar(id,pessoaAlterada);
     }
+    @DeleteMapping("/{id}")
+    public boolean deletarPessoa(@PathVariable("id") Long id){
+        return service.apagarPessoa(id);
+    }
 
 }
