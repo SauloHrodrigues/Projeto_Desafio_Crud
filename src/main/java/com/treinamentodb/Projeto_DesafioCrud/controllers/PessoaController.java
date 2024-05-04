@@ -17,9 +17,11 @@ public class PessoaController {
     @Autowired
     private PessoaService service;
 //    CRUD -> create, read, update, delete
+
+//    create
     @PostMapping
-    public  void salvarNovaPessoa(@RequestBody PessoaRequisitarDto dto ){
-        service.gravar(dto);
+    public  PessoaResponderDto salvarNovaPessoa(@RequestBody PessoaRequisitarDto dto ){
+        return service.gravar(dto);
     }
 
 //     Read
@@ -28,10 +30,13 @@ public class PessoaController {
         return service.listarPessoasCadastradas();
     }
 
+//    updade
     @PutMapping("/{id}")
     public void alterarPessoa(@PathVariable("id") Long id, @RequestBody PessoaRequisitarDto pessoaAlterada){
         service.alterar(id,pessoaAlterada);
     }
+
+//    delete
     @DeleteMapping("/{id}")
     public boolean deletarPessoa(@PathVariable("id") Long id){
         return service.apagarPessoa(id);

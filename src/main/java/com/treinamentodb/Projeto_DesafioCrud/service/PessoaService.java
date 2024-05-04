@@ -24,7 +24,7 @@ public class PessoaService {
     @Autowired
     private PessoaRepository pessoaRepository;
 
-    public void gravar(PessoaRequisitarDto request){
+    public PessoaResponderDto gravar(PessoaRequisitarDto request){
         Pessoa pessoa = new Pessoa();
 
 //        pessoa.setNome(request.getNome());
@@ -32,9 +32,15 @@ public class PessoaService {
         BeanUtils.copyProperties(request.getEndereco(),endereco);
         BeanUtils.copyProperties(request,pessoa); //
         pessoa.getEnderecos().add(endereco);
-
         pessoaRepository.save(pessoa);
-
+        Pessoa pessoaSalva = new Pessoa();
+        for(Pessoa p : pessoaRepository.findAll()){
+            if(p.getNome().equalsIgnoreCase(request.getNome())){
+                pessoaSalva = p;
+                break;
+            }
+        }
+        return new PessoaResponderDto(pessoaSalva);
     }
 
     public void alterar(Long id, PessoaRequisitarDto pessoaAlterada){
