@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -50,4 +51,13 @@ public class PessoaService {
         }
     }
 
+    public List<PessoaResponderDto> listarPessoasCadastradas() {
+        List<PessoaResponderDto> pessoaDtoList= new ArrayList<>();
+        for (Pessoa p : pessoaRepository.findAll()){
+            pessoaDtoList.add(new PessoaResponderDto(p));
+        }
+
+
+        return pessoaDtoList;
+    }
 }

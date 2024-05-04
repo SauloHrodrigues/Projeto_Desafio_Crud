@@ -16,10 +16,16 @@ import java.util.List;
 public class PessoaController {
     @Autowired
     private PessoaService service;
-
+//    CRUD -> create, read, update, delete
     @PostMapping
-    public  void salvarPessoa(@RequestBody PessoaRequisitarDto dto ){
+    public  void salvarNovaPessoa(@RequestBody PessoaRequisitarDto dto ){
         service.gravar(dto);
+    }
+
+//     Read
+    @GetMapping
+    public List<PessoaResponderDto> listarPessoasCadastradas(){
+        return service.listarPessoasCadastradas();
     }
 
     @PutMapping("/{id}")

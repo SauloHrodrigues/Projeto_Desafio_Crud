@@ -16,8 +16,14 @@ public class PessoaResponderDto {
     private Long id;
     private String nome;
     private String nascimento;
-    private String CPF;
+    private String cpf;
     private List<Endereco> enderecos;
 
-
+    public PessoaResponderDto(Pessoa pessoa) {
+        this.id = pessoa.getId();
+        this.nome = pessoa.getNome();
+        this.nascimento = pessoa.getNascimento();
+        this.cpf = pessoa.getCpf();
+        this.enderecos = pessoa.getEnderecos();
+    }
 }
