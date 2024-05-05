@@ -1,15 +1,12 @@
 package com.treinamentodb.Projeto_DesafioCrud.service;
 
-import com.treinamentodb.Projeto_DesafioCrud.dto.EnderecoRequestDto;
-import com.treinamentodb.Projeto_DesafioCrud.dto.PessoaRequisitarDto;
-import com.treinamentodb.Projeto_DesafioCrud.dto.PessoaResponderDto;
+import com.treinamentodb.Projeto_DesafioCrud.dto.PessoaRequestDto;
+import com.treinamentodb.Projeto_DesafioCrud.dto.PessoaResponseDto;
 import com.treinamentodb.Projeto_DesafioCrud.models.Endereco;
 import com.treinamentodb.Projeto_DesafioCrud.models.Pessoa;
 import com.treinamentodb.Projeto_DesafioCrud.repositories.PessoaRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -24,26 +21,26 @@ public class PessoaService {
     @Autowired
     private PessoaRepository pessoaRepository;
 
-    public PessoaResponderDto gravar(PessoaRequisitarDto request){
+    public PessoaResponseDto gravar(PessoaRequestDto request){
         Pessoa pessoa = new Pessoa();
 
 //        pessoa.setNome(request.getNome());
         Endereco endereco = new Endereco();
-        BeanUtils.copyProperties(request.getEndereco(),endereco);
+        BeanUtils.copyProperties(request.endereco(),endereco);
         BeanUtils.copyProperties(request,pessoa); //
         pessoa.getEnderecos().add(endereco);
         pessoaRepository.save(pessoa);
         Pessoa pessoaSalva = new Pessoa();
         for(Pessoa p : pessoaRepository.findAll()){
-            if(p.getNome().equalsIgnoreCase(request.getNome())){
+            if(p.getNome().equalsIgnoreCase(request.nome())){
                 pessoaSalva = p;
                 break;
             }
         }
-        return new PessoaResponderDto(pessoaSalva);
+        return new PessoaResponseDto(pessoaSalva);
     }
 
-    public PessoaResponderDto alterar(Long id, PessoaRequisitarDto pessoaAlterada){
+    public PessoaResponseDto alterar(Long id, PessoaRequestDto pessoaAlterada){
         Pessoa pessoaBuscada = pessoaRepository.findById(id).orElse(null);
 
         if(pessoaBuscada != null){
@@ -53,15 +50,15 @@ public class PessoaService {
             pessoaBuscada.getEnderecos().add(endereco);
 
             pessoaRepository.save(pessoaBuscada);
-            return new PessoaResponderDto(pessoaRepository.findById(id).get());
+            return new PessoaResponseDto(pessoaRepository.findById(id).get());
         }
         return null;
     }
 
-    public List<PessoaResponderDto> listarPessoasCadastradas() {
-        List<PessoaResponderDto> pessoaDtoList= new ArrayList<>();
+    public List<PessoaResponseDto> listarPessoasCadastradas() {
+        List<PessoaResponseDto> pessoaDtoList= new ArrayList<>();
         for (Pessoa p : pessoaRepository.findAll()){
-            pessoaDtoList.add(new PessoaResponderDto(p));
+            pessoaDtoList.add(new PessoaResponseDto(p));
         }
 
 

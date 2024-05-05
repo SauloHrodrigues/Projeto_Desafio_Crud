@@ -1,12 +1,9 @@
 package com.treinamentodb.Projeto_DesafioCrud.controllers;
 
-import com.treinamentodb.Projeto_DesafioCrud.dto.EnderecoRequestDto;
-import com.treinamentodb.Projeto_DesafioCrud.dto.PessoaRequisitarDto;
-import com.treinamentodb.Projeto_DesafioCrud.dto.PessoaResponderDto;
-import com.treinamentodb.Projeto_DesafioCrud.models.Pessoa;
+import com.treinamentodb.Projeto_DesafioCrud.dto.PessoaRequestDto;
+import com.treinamentodb.Projeto_DesafioCrud.dto.PessoaResponseDto;
 import com.treinamentodb.Projeto_DesafioCrud.service.PessoaService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,19 +17,19 @@ public class PessoaController {
 
 //    create
     @PostMapping
-    public  PessoaResponderDto salvarNovaPessoa(@RequestBody PessoaRequisitarDto dto ){
+    public PessoaResponseDto salvarNovaPessoa(@RequestBody PessoaRequestDto dto ){
         return service.gravar(dto);
     }
 
 //     Read
     @GetMapping
-    public List<PessoaResponderDto> listarPessoasCadastradas(){
+    public List<PessoaResponseDto> listarPessoasCadastradas(){
         return service.listarPessoasCadastradas();
     }
 
 //    updade
     @PutMapping("/{id}")
-    public PessoaResponderDto alterarPessoa(@PathVariable("id") Long id, @RequestBody PessoaRequisitarDto pessoaAlterada){
+    public PessoaResponseDto alterarPessoa(@PathVariable("id") Long id, @RequestBody PessoaRequestDto pessoaAlterada){
         return service.alterar(id,pessoaAlterada);
     }
 

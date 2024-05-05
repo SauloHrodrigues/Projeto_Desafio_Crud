@@ -6,8 +6,6 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
-
 @Getter
 @Setter
 //@Embeddable // classe embutida
@@ -30,11 +28,11 @@ public class Endereco {
         this.cep = cep;
         this.estado = estado;
     }  public Endereco(EnderecoRequestDto enderecoRequestDto) {
-        this.rua = enderecoRequestDto.getRua();
-        this.numero = enderecoRequestDto.getNumero();
-        this.cidade = enderecoRequestDto.getCidade();
-        this.cep = enderecoRequestDto.getCep();
-        this.estado = enderecoRequestDto.getEstado();
+        this.rua = enderecoRequestDto.rua();
+        this.numero = enderecoRequestDto.numero();
+        this.cidade = enderecoRequestDto.cidade();
+        this.cep = enderecoRequestDto.cep();
+        this.estado = enderecoRequestDto.estado();
     }
 
     public Endereco(){

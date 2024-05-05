@@ -1,15 +1,12 @@
 package com.treinamentodb.Projeto_DesafioCrud.dto;
 
-import lombok.Getter;
-import lombok.Setter;
+public record EnderecoRequestDto(
 
-@Getter
-@Setter
-public class EnderecoRequestDto {
+        String rua,
+        String numero,
+        String cidade,
+        String cep,
+        String estado
 
-    private String rua;
-    private String numero;
-    private String cidade;
-    private String cep;
-    private String estado;
+) {
 }
