@@ -60,8 +60,6 @@ public class PessoaService {
         for (Pessoa p : pessoaRepository.findAll()){
             pessoaDtoList.add(new PessoaResponseDto(p));
         }
-
-
         return pessoaDtoList;
     }
 
