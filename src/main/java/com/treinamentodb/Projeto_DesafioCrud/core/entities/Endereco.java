@@ -1,4 +1,4 @@
-package com.treinamentodb.Projeto_DesafioCrud.models;
+package com.treinamentodb.Projeto_DesafioCrud.core.entities;
 
 
 import com.treinamentodb.Projeto_DesafioCrud.dto.EnderecoRequestDto;
@@ -27,7 +27,9 @@ public class Endereco {
         this.cidade = cidade;
         this.cep = cep;
         this.estado = estado;
-    }  public Endereco(EnderecoRequestDto enderecoRequestDto) {
+    }
+
+    public Endereco(EnderecoRequestDto enderecoRequestDto) {
         this.rua = enderecoRequestDto.rua();
         this.numero = enderecoRequestDto.numero();
         this.cidade = enderecoRequestDto.cidade();
@@ -36,6 +38,6 @@ public class Endereco {
     }
 
     public Endereco(){
-
     }
+    
 }

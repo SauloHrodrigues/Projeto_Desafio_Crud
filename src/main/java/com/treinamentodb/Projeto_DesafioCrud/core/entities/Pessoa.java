@@ -1,4 +1,4 @@
-package com.treinamentodb.Projeto_DesafioCrud.models;
+package com.treinamentodb.Projeto_DesafioCrud.core.entities;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -10,7 +10,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-public class Pessoa {
+public class Pessoa{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "pessoa_id")

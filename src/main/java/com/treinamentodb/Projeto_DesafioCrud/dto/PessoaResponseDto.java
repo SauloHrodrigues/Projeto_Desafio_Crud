@@ -1,7 +1,7 @@
 package com.treinamentodb.Projeto_DesafioCrud.dto;
 
-import com.treinamentodb.Projeto_DesafioCrud.models.Endereco;
-import com.treinamentodb.Projeto_DesafioCrud.models.Pessoa;
+import com.treinamentodb.Projeto_DesafioCrud.core.entities.Endereco;
+import com.treinamentodb.Projeto_DesafioCrud.core.entities.Pessoa;
 
 import java.util.List;
 
