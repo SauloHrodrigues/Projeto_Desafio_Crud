@@ -17,6 +17,7 @@ public class Pessoa{
     private Long id;
     private String nome;
     private String nascimento;
+    @Column(unique = true)
     private String cpf;
 //    @Embedded
     @OneToMany(cascade = CascadeType.ALL)

@@ -12,4 +12,4 @@ INSERT INTO Pessoa(nome,nascimento,cpf) VALUES ('saulo henrique', '12/09/1978','
 INSERT INTO Pessoa(nome,nascimento,cpf) VALUES ('Pedro','12/09/1978','111.888.777-60');
 INSERT INTO Pessoa(nome,nascimento,cpf) VALUES ('Anderson','12/09/1998','333.565.676-60');
 INSERT INTO Pessoa(nome,nascimento,cpf) VALUES ('Mario', '13/06/1988','262.933.447-25');
-INSERT INTO Pessoa(nome,nascimento,cpf) VALUES ('joão', '/09/1978','222.333.444-85');
+INSERT INTO Pessoa(nome,nascimento,cpf) VALUES ('joão', '/09/1978','222.356.444-85');

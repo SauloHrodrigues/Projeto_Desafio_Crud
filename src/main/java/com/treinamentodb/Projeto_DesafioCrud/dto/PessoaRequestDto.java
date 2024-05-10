@@ -1,7 +1,8 @@
 package com.treinamentodb.Projeto_DesafioCrud.dto;
-public record PessoaRequestDto(
-        String nome,
-        String nascimento,
-        String cpf,
-        EnderecoRequestDto endereco
-) {}
+
+public class PessoaRequestDto {
+    private String nome;
+    private String nascimento;
+    private String cpf;
+    private EnderecoRequestDto endereco;
+}
